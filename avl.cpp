@@ -2,6 +2,10 @@
 #include "avl.hpp"
 using namespace std;
 
+Avl::Avl() {
+  root = NULL;
+}
+
 node_t *Avl::create_new_node(int value) {
   node_t *new_node = (node_t *)malloc(sizeof(node_t));
   if (new_node == NULL) {
@@ -18,6 +22,19 @@ node_t *Avl::create_new_node(int value) {
   return new_node;
 }
 
-Avl::Avl() {
-  root = NULL;
+void Avl::print_partial_tree(node_t *partial_root) {
+  if (partial_root == NULL) {
+    cout<<".";
+    return;
+  }
+
+  cout<<"(";
+  print_partial_tree(partial_root->left);
+  cout<<" "<<partial_root->value<<" ";
+  print_partial_tree(partial_root->right);
+  cout<<")";
+}
+
+void Avl::print_tree() {
+  print_partial_tree(root);
 }
