@@ -4,7 +4,6 @@ typedef struct _node {
   char status;
 } node_t;
 
-
 class Avl {
   private:
     node_t *root;
