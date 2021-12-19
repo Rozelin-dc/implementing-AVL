@@ -1,12 +1,18 @@
-typedef struct _avl_node {
+typedef struct _node {
   int value;
-  struct _avl_node *parent, *left, *right;
-} avl_node_t;
+  struct _node *parent, *left, *right;
+  char status;
+} node_t;
 
 
 class Avl {
   private:
-    avl_node_t *root;
+    node_t *root;
+    node_t *create_new_node(int value);
   public:
-    void insert(avl_node_t insert_node);
+    Avl();
+    void insert_node(int new_value);
+    void delete_node(int delete_value);
+    node_t *search(int search_value);
+    void print_tree();
 };
