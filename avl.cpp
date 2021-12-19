@@ -38,3 +38,18 @@ void Avl::print_partial_tree(node_t *partial_root) {
 void Avl::print_tree() {
   print_partial_tree(root);
 }
+
+/** search_value に一致する value を持つノードのポインタを返す。見つからなければ NULL を返す */
+node_t *Avl::search(int search_value) {
+  node_t *target = root;
+
+  while (target->value != search_value && target != NULL) {
+    if (target->value > search_value) {
+      target = target->left;
+    } else {
+      target = target->right;
+    }
+  }
+
+  return target;
+}
