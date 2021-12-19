@@ -1,5 +1,10 @@
+# compiler
+CC = g++
+# flags
+CFLAGS = -Wall
+
 all: avl.o
-	g++ avl.o -Wall
+	$(CC) avl.o $(CFLAGS)
 
 avl.o: avl.cpp avl.hpp
-	g++ -c avl.cpp -Wall
+	$(CC) -c avl.cpp $(CFLAGS)
