@@ -14,11 +14,12 @@ int main() {
     return 0;
   }
 
-  /* avl_tree.delete_node(3);
+  avl_tree.delete_node(3);
+  cout<<avl_tree.to_vector().size()<<endl;
   if (avl_tree.to_vector() != (vector<int>){18, 5, 20}) {
     cout<<"NG"<<endl;
     return 0;
-  } */
+  }
 
   cout<<"OK"<<endl;
 }

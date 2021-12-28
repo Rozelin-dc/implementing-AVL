@@ -5,6 +5,7 @@ using namespace std;
 template<typename T>
 Avl<T>::Avl() {
   root = NULL;
+  count = 0;
 }
 
 template<typename T>
@@ -66,6 +67,8 @@ template<typename T>
 void Avl<T>::insert(T insert_value) {
   node_t<T> *new_node = create_new_node(insert_value);
 
+  count++;
+
   if (root == NULL) {
     root = new_node;
     return;
@@ -97,6 +100,8 @@ void Avl<T>::delete_node(T delete_value) {
   if (delete_node == NULL) {
     return;
   }
+
+  count--;
 
   // 削除するノードが葉の時
   if (delete_node->left == NULL && delete_node->right == NULL) {
@@ -133,7 +138,6 @@ void Avl<T>::delete_node(T delete_value) {
 
   delete_node->value = switched_node->value;
   
-
   free(switched_node);
   return;
 }
@@ -160,4 +164,9 @@ vector<T> Avl<T>::to_vector() {
   }
 
   return tree;
+}
+
+template<typename T>
+int Avl<T>::size() {
+  return count;
 }
