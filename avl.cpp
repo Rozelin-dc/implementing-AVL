@@ -35,7 +35,10 @@ void Avl::print_partial_tree(node_t *partial_root) {
   cout << ")";
 }
 
-void Avl::print_tree() { print_partial_tree(root); }
+void Avl::print_tree() {
+  print_partial_tree(root);
+  cout<<endl;
+}
 
 /* search_value に一致する value を持つノードのポインタを返す。
  * 見つからなければNULL を返す
@@ -54,17 +57,17 @@ node_t *Avl::search(int search_value) {
   return target;
 }
 
-void Avl::insert_node(int insert_value) {
+void Avl::insert(int insert_value) {
   node_t *new_node = create_new_node(insert_value);
 
-  if (root = NULL) {
+  if (root == NULL) {
     root = new_node;
     return;
   }
 
   node_t *target = root;
 
-  while (!(target->left == NULL && target->value >= insert_value) ||
+  while (!(target->left == NULL && target->value >= insert_value) &&
          !(target->right == NULL && target->value < insert_value)) {
     if (target->value < insert_value) {
       target = target->right;
@@ -80,4 +83,31 @@ void Avl::insert_node(int insert_value) {
     target->left = new_node;
     new_node->parent = target;
   }
+}
+
+void Avl::delete_node(int delete_value) {
+  return;
+}
+
+vector<int> Avl::to_vector() {
+  vector<int> tree(0);
+  queue<node_t *> que;
+  que.push(root);
+
+  node_t *front;
+  while (!que.empty()) {
+    front = que.front();
+    tree.push_back(front->value);
+
+    if (front->left != NULL) {
+      que.push(front->left);
+    }
+    if (front->right != NULL) {
+      que.push(front->right);
+    }
+
+    que.pop();
+  }
+
+  return tree;
 }
