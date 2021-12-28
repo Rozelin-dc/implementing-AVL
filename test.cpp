@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-  Avl avl_tree;
+  Avl<int> avl_tree;
 
   avl_tree.insert(18);
   avl_tree.insert(3);
